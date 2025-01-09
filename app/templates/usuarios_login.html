@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Usuários Logados</h2>
+<table>
+    <tr>
+        <th>Usuário</th>
+        <th>Último Login</th>
+    </tr>
+    {% for user in users %}
+    <tr>
+        <td>{{ user.user.username }}</td>
+        <td>{{ user.last_login }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
