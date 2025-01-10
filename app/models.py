@@ -14,7 +14,3 @@ class Usuario(models.Model):
 class UserLoginInfo(models.Model): 
     user = models.OneToOneField(User, on_delete=models.CASCADE) 
     last_login = models.DateTimeField(auto_now=True)
-
-@receiver(user_logged_in)
-def update_user_login_info(sender, request, user, **kwargs):
-    UserLoginInfo.objects.update_or_create(user=user, defaults={'last_login': timezone.now()})

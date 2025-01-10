@@ -1,4 +1,3 @@
-from django.contrib.auth import authenticate, login as auth_login
 from django.contrib.auth.decorators import login_required 
 from django.shortcuts import render, redirect
 from .models import UserLoginInfo
@@ -10,12 +9,7 @@ def login(request):
         if form.is_valid():
             email = form.cleaned_data['email']
             senha = form.cleaned_data['senha']
-            user = authenticate(request, username=email, password=senha)
-            if user is not None:
-                auth_login(request, user)
-                return redirect('index')
-            else:
-                form.add_error(None, 'Email ou senha incorretos')
+            return redirect('index')
     else:
         form = UsuarioForm()
     return render(request, 'login.html', {'form': form})
@@ -23,6 +17,9 @@ def login(request):
 
 def index(request): 
     return render(request, 'index.html')
+
+def sobre_nos(request):
+    return render(request, 'sobre_nos.html')
 
 @login_required 
 def usuarios_login(request): 
