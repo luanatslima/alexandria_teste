@@ -25,13 +25,3 @@ def sobre_nos(request):
 def usuarios_login(request): 
     users = UserLoginInfo.objects.all() 
     return render(request, 'usuarios_login.html', {'users': users})
-
-def registrar(request):
-    if request.method == 'POST':
-        form = UsuarioForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('login')  # Redirecionar para a página de login após o registro
-    else:
-        form = UsuarioForm()
-    return render(request, 'registrar.html', {'form': form})
