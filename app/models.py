@@ -1,6 +1,5 @@
 from django.contrib.auth.models import User
 from django.db import models
-from django.contrib.auth.signals import user_logged_in
 
 class Usuario(models.Model): 
     email = models.EmailField(unique=True) 
