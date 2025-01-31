@@ -1,5 +1,13 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.contrib.auth.models import AbstractUser
+
+class CustomUser(AbstractUser):
+    email = models.EmailField(unique=True)
+    # Adicione campos adicionais se necessário
+
+    def __str__(self):
+        return self.username
 
 class Usuario(models.Model): 
     email = models.EmailField(unique=True) 
